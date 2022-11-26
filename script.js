@@ -14,26 +14,29 @@ function PoemButton(buttonCaption, alertText) {
   var newEl = document.createElement("input");
   newEl.classList.add("btn");
   newEl.value = this.buttonCaption;
+  newEl.dataset.text = this.alertText;
   document.body.appendChild(newEl);
+
+  // for (var i = 0; i < BTN.length; i++) {
+  //   BTN[i].onclick = function (e) {
+  //     var str = e.target.dataset;
+  //     console.log(str);
+  //   };
+  // }
 }
 
-PoemButton.prototype.buttonPressed = function (text) {
-  return alert(text);
+PoemButton.prototype.buttonPressed = function () {
+  const BTN = document.querySelector(".btn");
+  // console.log(this.alertText);
+  // return alert(text);
 };
 
 function btn() {
   for (var i = 0; i < arr.length; i++) {
     const element = arr[i].buttonCaption;
-    var obj = new PoemButton(element);
-  }
-
-  const BTN = document.querySelectorAll(".btn");
-  for (var i = 0; i < BTN.length; i++) {
-    BTN[i].onclick = function (e) {
-      var str = e.target.value;
-      str = +str[str.length - 1];
-      var text = arr[str - 1].alertText;
-      PoemButton.prototype.buttonPressed(text);
-    };
+    const text = arr[i].alertText;
+    var obj = new PoemButton(element, text);
   }
 }
+
+PoemButton.prototype.buttonPressed();

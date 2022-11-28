@@ -15,10 +15,10 @@ function PoemButton(buttonCaption, alertText) {
   var newEl = document.createElement("input");
   newEl.classList.add("btn");
   newEl.value = self.buttonCaption;
+  document.getElementById("script").before(newEl);
   newEl.onclick = function () {
     self.buttonPressed();
   };
-  document.body.appendChild(newEl);
 
   self.buttonPressed = function () {
     alert(self.alertText);
@@ -27,8 +27,6 @@ function PoemButton(buttonCaption, alertText) {
 
 function btnCreate() {
   for (var i = 0; i < arr.length; i++) {
-    const element = arr[i].buttonCaption;
-    const text = arr[i].alertText;
-    var obj = new PoemButton(element, text);
+    var obj = new PoemButton(arr[i].buttonCaption, arr[i].alertText);
   }
 }
